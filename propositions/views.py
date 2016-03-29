@@ -21,10 +21,3 @@ class PropositionViewSet(viewsets.ModelViewSet):
 		permissions.IsAuthenticatedOrReadOnly,
 		IsAuthorOrReadOnly,
 		)
-
-class UserViewSet(viewsets.ModelViewSet):
-	"""
-	API endpoint that allows users to be viewed or edited.
-	"""
-	queryset = User.objects.all().order_by('-date_joined')
-	serializer_class = UserSerializer
