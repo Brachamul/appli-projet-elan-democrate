@@ -1,21 +1,17 @@
-from django.contrib.auth.models import User
-
 from rest_framework import serializers
 
 from .models import Proposition
+from users.serializers import UserSerializer
 
 
 class PropositionSerializer(serializers.HyperlinkedModelSerializer):
 
+	author = UserSerializer()
+
 	class Meta:
 		model = Proposition
 		fields = (
-			'title', 'author', 'content',
-			'slug', 'status', 'date_created', 'url'
+			'slug', 'title', 'author', 'content',
+			'status', 'date_created', 'url'
 			)
-		read_only_fields = ('id', 'slug', 'author', 'status')
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = User
-		fields = ('url', 'username', 'email', 'groups')
+		read_only_fields = ('slug', 'author', 'status', 'date_created')

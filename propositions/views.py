@@ -3,7 +3,8 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, permissions
 
 from .models import Proposition
-from .serializers import PropositionSerializer, UserSerializer
+from .serializers import PropositionSerializer
+from users.serializers import UserSerializer
 from .permissions import IsAuthorOrReadOnly
 
 
